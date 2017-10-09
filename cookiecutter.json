@@ -1,0 +1,124 @@
+{
+    "full_name": "Your name",
+    "email": "Your address email (eq. you@example.com)",
+    "project_name": "Name of the project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+    "package_name": "{{ cookiecutter.project_slug.replace('-', '_') }}",
+    "project_short_description": "A short description of the project (for setup.py metadata)",
+    "project_url": "Project URL (for setup.py metadata)",
+    "license": [
+        "Dual MIT/Apache 2 (like Trio)",
+        "GPLv3 or later",
+        "Other"
+    ],
+    "test_on_linux": "y",
+    "test_on_macos": "y",
+    "test_on_windows": "y",
+    "test_on_cpython_35": "y",
+    "test_on_cpython_36": "y",
+    "test_on_pypy3": "y",
+    "test_on_python_prereleases": "y",
+
+    "_comment": [
+        "The above license strings are for users to look at. They're not",
+        "super friendly for programs. So the rest of the cookiecutter never",
+        "uses them directly, but only as keys into this table:"
+    ],
+    "_license_info": {
+        "Dual MIT/Apache 2 (like Trio)": {
+            "slug": "dual-mit-apache2",
+            "readme": "Your choice of MIT or Apache License 2.0",
+            "license_field": "MIT -or- Apache License 2.0",
+            "trove": [
+                "License :: OSI Approved :: MIT License",
+                "License :: OSI Approved :: Apache Software License"
+            ]
+        },
+        "GPLv3 or later": {
+            "slug": "gplv3+",
+            "readme": "GPLv3 as published by the Free Software Foundation, or (at your option) any later version",
+            "license_field": "GPLv3 or later",
+            "trove": [
+                "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"
+            ]
+        },
+        "Other": {
+            "slug": "other",
+            "readme": "<COOKIECUTTER-TRIO-TODO: fill me in!>",
+            "license_field": "<COOKIECUTTER-TRIO-TODO: fill me in!>",
+            "trove": [
+            ]
+        }
+    },
+
+    "_comment": "https://docs.microsoft.com/en-us/visualstudio/python/cookiecutter#optimizing-cookiecutter-templates-for-visual-studio",
+    "_visual_studio": {
+        "full_name": {
+            "label": "Full name",
+            "description": "Your full name (for setup.py metadata)"
+        },
+        "email": {
+            "label": "Email",
+            "description": "Your email (for setup.py metadata)"
+        },
+        "project_name": {
+            "label": "Project name",
+            "description": "Name of the project (for human text, like docs)"
+        },
+        "project_slug": {
+            "label": "Project slug",
+            "description": "Name of the project (for 'pip install <...>')"
+        },
+        "package_name": {
+            "label": "Package name",
+            "description": "Name of the package (for 'import <...>')"
+        },
+        "project_short_description": {
+            "label": "Project short description",
+            "descripton": "One line (for setup.py metadata)"
+        },
+        "project_url": {
+            "label": "Project URL",
+            "descripton": "(for setup.py metadata)"
+        },
+        "license": {
+            "label": "License"
+        },
+        "test_on_linux": {
+            "label": "Run tests on Linux (using Travis)?",
+            "selector": "yesno"
+        },
+        "test_on_macos": {
+            "label": "Run tests on MacOS (using Travis)?",
+            "selector": "yesno"
+        },
+        "test_on_windows": {
+            "label": "Run tests on Windows (using Appveyor)?",
+            "selector": "yesno"
+        },
+        "test_on_cpython_35": {
+            "label": "Run tests on CPython 3.5?",
+            "selector": "yesno"
+        },
+        "test_on_cpython_36": {
+            "label": "Run tests on CPython 3.6?",
+            "selector": "yesno"
+        },
+        "test_on_pypy3": {
+            "label": "Run tests on PyPy3?",
+            "selector": "yesno"
+        },
+        "test_on_python_prereleases": {
+            "label": "Run tests on Python prereleases?",
+            "selector": "yesno"
+        }
+    },
+    "_visual_studio_post_cmds": [
+        {
+            "name": "File.OpenFile",
+            "args": [
+                "{{ cookiecutter._output_folder_path }}\\CHEATSHEET.rst"
+            ]
+        }
+    ]
+}

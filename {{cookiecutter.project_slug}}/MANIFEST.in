@@ -1,0 +1,6 @@
+include LICENSE*
+include README.rst
+include CODE_OF_CONDUCT*
+include test-requirements.txt
+recursive-include docs *
+prune docs/build
