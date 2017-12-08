@@ -1,6 +1,5 @@
 Todo:
 
-* hook for copying license files
 * add a test that we can run cookiecutter, install, run tests, run
   towncrier, docs work (maybe run the travis script?)
 * switch to pytest-trio
@@ -23,10 +22,12 @@ project, by providing a bunch of preconfigured boilerplate for:
 * yapf so you don't have to think about formatting
 
 This is just an optional starting point – you don't have to use it,
-and if you do use it, then you can still customize everything to your
-likely. But, this is the same basic setup used to develop Trio itself
-and many related projects, so the closer you stick to the template the
-easier it will be for new contributors to hit the ground running.
+and if you do use it, then all it does is generate a bunch of
+boilerplate, so once it's done you're free to customize everything to
+your liking. But, this is the same basic setup used to develop Trio
+itself and many related projects, so the closer you stick to the
+template the easier it will be for new contributors to hit the ground
+running.
 
 
 Let's do this!
