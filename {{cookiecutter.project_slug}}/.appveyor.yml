@@ -4,14 +4,12 @@ os: Visual Studio 2015
 
 environment:
   matrix:
-{%- if cookiecutter.test_on_cpython_35 %}
+{%- if cookiecutter.earliest_supported_python <= "3.5" %}
     - PYTHON: "C:\\Python35"
     - PYTHON: "C:\\Python35-x64"
 {%- endif %}
-{%- if cookiecutter.test_on_cpython_36 %}
     - PYTHON: "C:\\Python36"
     - PYTHON: "C:\\Python36-x64"
-{%- endif %}
 
 build_script:
   - "git --no-pager log -n2"
@@ -28,6 +26,5 @@ test_script:
   - "cd empty"
   # Make sure it's being imported from where we expect
   - "python -c \"import os, {{cookiecutter.package_name}}; print(os.path.dirname({{cookiecutter.package_name}}.__file__))\""
-  # -u makes sure we get prompt output
   - "python -u -m pytest -W error -ra -v -s --pyargs {{cookiecutter.package_name}} --cov={{cookiecutter.package_name}} --cov-config=../.coveragerc"
   - "codecov"

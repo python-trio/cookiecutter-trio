@@ -1,17 +1,8 @@
 Todo:
 
 * hook for copying license files
-* hook for deleting appveyor.yml if unneeded
-* get pytest set up properly
 * add a test that we can run cookiecutter, install, run tests, run
   towncrier, docs work (maybe run the travis script?)
-* CI setup
-* RTD setup
-* switch to:
-  * earliest python version?
-  * support pypy?
-  * add notes on how to remove windows/macos/linux testing if desired
-* figure out how to do ReST headlines in index.rst and README.rst
 * switch to pytest-trio
 
 
@@ -36,10 +27,6 @@ and if you do use it, then you can still customize everything to your
 likely. But, this is the same basic setup used to develop Trio itself
 and many related projects, so the closer you stick to the template the
 easier it will be for new contributors to hit the ground running.
-
-
-XX ughhh what are we going to do about in-tree tests vs. out-of-tree
-tests.
 
 
 Let's do this!

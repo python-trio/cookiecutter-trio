@@ -14,7 +14,6 @@ if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     $PYTHON_EXE -m virtualenv testenv
     source testenv/bin/activate
 fi
-{%- if cookiecutter.test_on_pypy3 %}
 
 if [ "$USE_PYPY_NIGHTLY" = "1" ]; then
     curl -fLo pypy.tar.bz2 http://buildbot.pypy.org/nightly/py3.5/pypy-c-jit-latest-linux64.tar.bz2
@@ -52,7 +51,6 @@ if [ "$USE_PYPY_RELEASE_VERSION" != "" ]; then
     $PYTHON_EXE -m virtualenv testenv
     source testenv/bin/activate
 fi
-{%- endif %}
 
 pip install -U pip setuptools wheel
 
@@ -96,5 +94,5 @@ else
 
     pytest -W error -ra -v --pyargs {{cookiecutter.package_name}} --cov={{cookiecutter.package_name}} --cov-config=../.coveragerc --verbose
 
-    pip install codecov && codecov
+    bash <(curl -s https://codecov.io/bash)
 fi

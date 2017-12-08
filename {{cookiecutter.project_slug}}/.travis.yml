@@ -1,50 +1,29 @@
 language: python
-{%- if cookiecutter.test_on_linux == "y" %}
 python:
-{%- if cookiecutter.test_on_cpython_35 == "y" %}
   - 3.5.0
   - 3.5.2
-{%- if cookiecutter.test_on_python_prereleases %}
   - 3.5-dev
-{% endif -%} {# end 3.5-dev #}
-{% endif -%} {# end 3.5.x #}
-{%- if cookiecutter.test_on_cpython_36 == "y" %}
   - 3.6
-{%- if cookiecutter.test_on_python_prereleases %}
   - 3.6-dev
-{% endif -%} {# end 3.6-dev #}
-{% endif -%} {# end 3.6.x #}
-{%- if cookiecutter.test_on_python_prereleases %}
   - 3.7-dev
-{% endif -%} {# end 3.7-dev #}
-{% endif -%} {# end test_on_linux #}
 sudo: false
 dist: trusty
 
 matrix:
   include:
-{%- if cookiecutter.test_on_pypy3 == "y" and cookiecutter.test_on_linux == "y" %}
     - os: linux
       language: generic
       env: USE_PYPY_RELEASE_VERSION=5.9-beta
-{%- if cookiecutter.test_on_python_prereleases %}
-    - os: linux
-      language: generic
-      env: USE_PYPY_NIGHTLY=1
-{% endif -%} {# end pypy nightly #}
-{% endif -%} {# end pypy on linux #}
-{%- if cookiecutter.test_on_macos == "y" %}
-{%- if cookiecutter.test_on_cpython_35 == "y" %}
+    # Uncomment if you want to test on pypy nightly
+    # - os: linux
+    #   language: generic
+    #   env: USE_PYPY_NIGHTLY=1
     - os: osx
       language: generic
-      env: MACPYTHON=3.5.3
-{% endif -%} {# end macos 3.5 #}
-{%- if cookiecutter.test_on_cpython_36 == "y" %}
+      env: MACPYTHON=3.5.4
     - os: osx
       language: generic
-      env: MACPYTHON=3.6.2
-{% endif -%} {# end macos 3.6 #}
-{% endif -%} {# end macos #}
+      env: MACPYTHON=3.6.3
     - os: linux
       language: python
       python: 3.6

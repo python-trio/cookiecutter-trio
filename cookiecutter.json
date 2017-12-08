@@ -11,13 +11,10 @@
         "GPLv3 or later",
         "Other"
     ],
-    "test_on_linux": "y",
-    "test_on_macos": "y",
-    "test_on_windows": "y",
-    "test_on_cpython_35": "y",
-    "test_on_cpython_36": "y",
-    "test_on_pypy3": "y",
-    "test_on_python_prereleases": "y",
+    "earliest_supported_python": [
+        "3.5",
+        "3.6"
+    ],
 
     "_comment": [
         "The above license strings are for users to look at. They're not",
@@ -84,33 +81,8 @@
         "license": {
             "label": "License"
         },
-        "test_on_linux": {
-            "label": "Run tests on Linux (using Travis)?",
-            "selector": "yesno"
-        },
-        "test_on_macos": {
-            "label": "Run tests on MacOS (using Travis)?",
-            "selector": "yesno"
-        },
-        "test_on_windows": {
-            "label": "Run tests on Windows (using Appveyor)?",
-            "selector": "yesno"
-        },
-        "test_on_cpython_35": {
-            "label": "Run tests on CPython 3.5?",
-            "selector": "yesno"
-        },
-        "test_on_cpython_36": {
-            "label": "Run tests on CPython 3.6?",
-            "selector": "yesno"
-        },
-        "test_on_pypy3": {
-            "label": "Run tests on PyPy3?",
-            "selector": "yesno"
-        },
-        "test_on_python_prereleases": {
-            "label": "Run tests on Python prereleases?",
-            "selector": "yesno"
+        "earliest_supported_python": {
+            "label": "Earliest Python version you want to support?"
         }
     },
     "_visual_studio_post_cmds": [

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 exec(open("{{cookiecutter.package_name}}/_version.py", encoding="utf-8").read())
 
-LONG_DESC = open("README.rst").read()
+LONG_DESC = open("README.rst", encoding="utf-8").read()
 
 setup(
     name="{{cookiecutter.project_slug}}",
@@ -21,34 +21,26 @@ setup(
         # COOKIECUTTER-TRIO-TODO: add some keywords
         # "async", "io", "networking", ...
     ],
-    {% if cookiecutter["test_on_cpython_35"] == "y" -%}
-    python_requires=">=3.5",
-    {%- else -%}
-    python_requires=">=3.6",
-    {%- endif %}
+    python_requires=">={{ cookiecutter.earliest_supported_python }}",
     classifiers=[
         {% for classifier in cookiecutter["_license_info"][cookiecutter.license]["trove"] -%}
         "{{classifier}}",
         {% endfor -%}
-        {% if cookiecutter.test_on_linux == "y" -%}
+        # COOKIECUTTER-TRIO-TODO: Remove any of these classifiers that don't
+        # apply:
         "Operating System :: POSIX :: Linux",
-        {% endif -%}
-        {% if cookiecutter.test_on_macos == "y" -%}
         "Operating System :: MacOS :: MacOS X",
-        {% endif -%}
-        {% if cookiecutter.test_on_windows == "y" -%}
         "Operating System :: Microsoft :: Windows",
-        {% endif -%}
         "Programming Language :: Python :: 3 :: Only",
-        {% if cookiecutter.test_on_cpython_35 == "y" or cookiecutter.test_on_cpython_36 -%}
         "Programming Language :: Python :: Implementation :: CPython",
-        {% endif -%}
-        {% if cookiecutter.test_on_pypy3 == "y" -%}
         "Programming Language :: Python :: Implementation :: PyPy",
-        {% endif -%}
-        # COOKIECUTTER-TRIO-TODO: Consider adding:
+        # COOKIECUTTER-TRIO-TODO: Consider adding trove classifiers for:
+        #
         # - Development Status
         # - Intended Audience
         # - Topic
+        #
+        # For the full list of options, see:
+        #   https://pypi.python.org/pypi?%3Aaction=list_classifiers
     ],
 )

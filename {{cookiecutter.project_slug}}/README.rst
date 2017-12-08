@@ -1,3 +1,6 @@
+{{ cookiecutter.project_name }}
+{{ "=" * cookiecutter.project_name.__len__() }}
+
 Welcome to `{{cookiecutter.project_name}} <{{cookiecutter.project_url}}>`__!
 
 {{cookiecutter.project_short_description}}

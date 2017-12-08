@@ -8,27 +8,34 @@ might want to do to get started:
 * Check this into source control (``git init .; git add .; git
   commit -m "Initial commit"``)
 
-* Fill in your README.rst
-
 * Add a CODE_OF_CONDUCT.md
 
 * Add a CONTRIBUTING.md
 
-* Search for COOKIECUTTER-TRIO-TODO
+* Search the source tree for COOKIECUTTER-TRIO-TODO to find other
+  places to fill in.
 
-{-% if cookiecutter._license_info[cookiecutter.license].slug == "other" %}
+{%- if cookiecutter._license_info[cookiecutter.license].slug == "other" %}
 * Since you selected an "other" license: remove LICENSE-IS-MISSING and
   add a LICENSE file, and update ``setup.py`` and ``README.rst`` to
   tell people your license choice.
 
 {% endif -%}
-* Set up RTD
+* Enable `Read the Docs <https://readthedocs.org>`__. (Note: this
+  project contains a ``.readthedocs.yml`` file that should be enough
+  to get things working.)
 
-  - ci/rtd-requirements.txt
+* Set up continuous integration: Currently, this project is set up to
+  test on Linux and MacOS using Travis, on Windows using Appveyor, and
+  to test on PyPy.
 
-* Review Travis & Appveyor configuration, and then set them up
+  If that's what you want, then go to Travis and Appveyor and enable
+  testing for your repo.
 
-* Set up Codecov
+  If that's not what you want, then you can trim the list by modifying
+  (or deleting) ``.travis.yml``, ``.appveyor.yml``, ``ci/travis.sh``.
+
+* Enable `Codecov <https://codecov.io>`__ for your repo.
 
 * File bugs or pull requests on `cookiecutter-trio
   <https://github.com/python-trio/cookiecutter-trio>`__ reporting any
@@ -40,14 +47,17 @@ might want to do to get started:
 Tips
 ====
 
-To run tests:
+To run tests
+------------
 
 * Install requirements: ``pip install -r test-requirements.txt``
   (possibly in a virtualenv)
 
 * Actually run the tests: ``pytest {{cookiecutter.package_name}}``
 
-To run yapf:
+
+To run yapf
+-----------
 
 * Show what changes yapf wants to make: ``yapf -rpd setup.py
   {{cookiecutter.package_name}}``
@@ -55,14 +65,24 @@ To run yapf:
 * Apply all changes directly to the source tree: ``yapf -rpi setup.py
   {{cookiecutter.package_name}}``
 
-To make a release:
+
+To make a release
+-----------------
 
 * Update the version in ``{{cookiecutter.package_name}}/_version.py``
 
-* Run towncrier (XX)
+* Run ``towncrier`` to collect your release notes.
 
-* ...
+* Review your release notes.
 
-To upload to pypi:
+* Check everything in.
 
-* ...
+* Double-check it all works, docs build, etc.
+
+* Build your sdist and wheel: ``python setup.py sdist bdist_wheel``
+
+* Upload to PyPI: ``twine upload dist/*``
+
+* Use ``git tag`` to tag your version.
+
+* Don't forget to ``git push --tags``.
