@@ -18,7 +18,7 @@ setup(
         "trio",
     ],
     keywords=[
-        # COOKIECUTTER-TODO: add some keywords
+        # COOKIECUTTER-TRIO-TODO: add some keywords
         # "async", "io", "networking", ...
     ],
     {% if cookiecutter["test_on_cpython_35"] == "y" -%}
@@ -46,7 +46,7 @@ setup(
         {% if cookiecutter.test_on_pypy3 == "y" -%}
         "Programming Language :: Python :: Implementation :: PyPy",
         {% endif -%}
-        # COOKIECUTTER-TODO: Consider adding:
+        # COOKIECUTTER-TRIO-TODO: Consider adding:
         # - Development Status
         # - Intended Audience
         # - Topic

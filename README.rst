@@ -1,27 +1,41 @@
+Todo:
+
+* hook for copying license files
+* hook for deleting appveyor.yml if unneeded
+* get pytest set up properly
+* add a test that we can run cookiecutter, install, run tests, run
+  towncrier, docs work (maybe run the travis script?)
+* CI setup
+* RTD setup
+* switch to:
+  * earliest python version?
+  * support pypy?
+  * add notes on how to remove windows/macos/linux testing if desired
+* figure out how to do ReST headlines in index.rst and README.rst
+* switch to pytest-trio
+
+
 cookiecutter-trio
 =================
 
-This is a cookiecutter template for Python projects using `Trio
+This is a cookiecutter template to for Python projects that use `Trio
 <https://trio.readthedocs.io>`__. It makes it easy to start a new
-project.
-
-You don't have to use this – Trio's just an ordinary Python package
-that you can use like any other, and if you already have a preferred
-way of setting up Python projects, then go for it. But using this
-template sets up a number of handy things:
+project, by providing a bunch of preconfigured boilerplate for:
 
 * pytest with trio integration
 * sphinx docs with sphinxcontrib-trio enabled
 * Readthedocs to publish your docs
-* Using Travis and Appveyor to test your package on all the different
+* Travis and Appveyor to test your package on all the different
   platforms Trio supports: Windows + MacOS + Linux, CPython + PyPy
 * Codecov to track code coverage information
 * towncrier for easy release note management
 * yapf so you don't have to think about formatting
 
-This is the same setup used to develop Trio itself and many related
-projects, so using it makes it easy for new contributors to get
-started.
+This is just an optional starting point – you don't have to use it,
+and if you do use it, then you can still customize everything to your
+likely. But, this is the same basic setup used to develop Trio itself
+and many related projects, so the closer you stick to the template the
+easier it will be for new contributors to hit the ground running.
 
 
 XX ughhh what are we going to do about in-tree tests vs. out-of-tree
@@ -39,8 +53,9 @@ Let's do this!
    project (e.g., if you said your project is called
    ``superwhizbang``, then there will be a directory called
    ``superwhizbang/``).
-4. Look through ``{your project}/NEW-PROJECT-TODO.rst`` for a
-   checklist of things to think about.
+4. Look through ``{your project}/CHEATSHEET.rst`` for a
+   checklist of things to think about and tips on how to do basic
+   things like running tests.
 
 
 License

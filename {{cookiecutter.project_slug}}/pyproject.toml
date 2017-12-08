@@ -1,0 +1,12 @@
+[tool.towncrier]
+# Usage:
+# - PRs should drop a file like "issuenumber.feature.rst" in newsfragments/
+#   (or "bugfix", "doc", "removal", "misc"; misc gets no text. The categories can be customized.)
+# - At release time after bumping version number, run: towncrier
+#   (or towncrier --draft)
+package = "{{cookiecutter.package_name}}"
+filename = "docs/source/history.rst"
+directory = "newsfragments"
+underlines = ["-", "~", "^"]
+# COOKIECUTTER-TRIO-TODO: fill in the URL below to point to your issue tracker:
+issue_format = "`#{issue} <https://github.com/ACCOUNT/REPO/issues/{issue}>`__"

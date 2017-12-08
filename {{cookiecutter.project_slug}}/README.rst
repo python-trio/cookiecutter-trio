@@ -4,5 +4,5 @@ Welcome to `{{cookiecutter.project_name}} <{{cookiecutter.project_url}}>`__!
 
 License: {{cookiecutter._license_info[cookiecutter.license].readme}}
 
-COOKIECUTTER-TODO: finish filling in your README!
+COOKIECUTTER-TRIO-TODO: finish filling in your README!
 Must be valid ReST; also used as the PyPI description.
