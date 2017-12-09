@@ -14,13 +14,13 @@ might want to do to get started:
 
 * Search the source tree for COOKIECUTTER-TRIO-TODO to find other
   places to fill in.
-
 {%- if cookiecutter._license_info[cookiecutter.license].slug == "other" %}
+
 * Since you selected an "other" license: remove LICENSE-IS-MISSING and
   add a LICENSE file, and update ``setup.py`` and ``README.rst`` to
   tell people your license choice.
+{%- endif %}
 
-{% endif -%}
 * Enable `Read the Docs <https://readthedocs.org>`__. (Note: this
   project contains a ``.readthedocs.yml`` file that should be enough
   to get things working.)
