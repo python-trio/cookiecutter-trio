@@ -26,6 +26,7 @@ setup(
         {% for classifier in cookiecutter["_license_info"][cookiecutter.license]["trove"] -%}
         "{{classifier}}",
         {% endfor -%}
+        "Framework :: Trio",
         # COOKIECUTTER-TRIO-TODO: Remove any of these classifiers that don't
         # apply:
         "Operating System :: POSIX :: Linux",
