@@ -9,7 +9,7 @@ setup(
     version=__version__,
     description="{{cookiecutter.project_short_description}}",
     url="{{cookiecutter.project_url}}",
-    long_description=open("README.rst").read(),
+    long_description=LONG_DESC,
     author="{{cookiecutter.full_name}}",
     author_email="{{cookiecutter.email}}",
     license="{{cookiecutter._license_info[cookiecutter.license].license_field}}",
