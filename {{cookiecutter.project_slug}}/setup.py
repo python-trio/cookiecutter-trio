@@ -42,6 +42,6 @@ setup(
         # - Topic
         #
         # For the full list of options, see:
-        #   https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        #   https://pypi.org/classifiers/
     ],
 )
