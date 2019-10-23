@@ -56,13 +56,13 @@ To run tests
 * Actually run the tests: ``pytest {{cookiecutter.package_name}}``
 
 
-To run yapf
+To run black
 -----------
 
-* Show what changes yapf wants to make: ``yapf -rpd setup.py
+* Show what changes black wants to make: ``black --diff setup.py
   {{cookiecutter.package_name}}``
 
-* Apply all changes directly to the source tree: ``yapf -rpi setup.py
+* Apply all changes directly to the source tree: ``black -rpi setup.py
   {{cookiecutter.package_name}}``
 
 

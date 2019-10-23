@@ -19,7 +19,7 @@ project, by providing a bunch of preconfigured boilerplate for:
   platforms Trio supports: Windows + MacOS + Linux, CPython + PyPy
 * Codecov to track code coverage information
 * towncrier for easy release note management
-* yapf so you don't have to think about formatting
+* black so you don't have to think about formatting
 
 This is just an optional starting point – you don't have to use it,
 and if you do use it, then all it does is generate a bunch of
