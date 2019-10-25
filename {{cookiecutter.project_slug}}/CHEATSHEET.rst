@@ -57,12 +57,12 @@ To run tests
 
 
 To run black
------------
+------------
 
 * Show what changes black wants to make: ``black --diff setup.py
   {{cookiecutter.package_name}}``
 
-* Apply all changes directly to the source tree: ``black -rpi setup.py
+* Apply all changes directly to the source tree: ``black setup.py
   {{cookiecutter.package_name}}``
 
 
