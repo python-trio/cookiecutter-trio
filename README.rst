@@ -8,7 +8,7 @@ Todo:
 cookiecutter-trio
 =================
 
-This is a cookiecutter template to for Python projects that use `Trio
+This is a cookiecutter template for Python projects that use `Trio
 <https://trio.readthedocs.io>`__. It makes it easy to start a new
 project, by providing a bunch of preconfigured boilerplate for:
 
