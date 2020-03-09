@@ -26,16 +26,30 @@ might want to do to get started:
   to get things working.)
 
 * Set up continuous integration: Currently, this project is set up to
-  test on Linux and MacOS using Travis, on Windows using Appveyor, and
-  to test on PyPy.
+  test on Linux, MacOS, and Windows using Azure Pipelines, and to test
+  some additional Python versions on Linux (PyPy and nightly) using
+  Travis.
 
-  If that's what you want, then go to Travis and Appveyor and enable
+  If that's what you want, then go to Travis and Azure Pipelines and enable
   testing for your repo.
 
   If that's not what you want, then you can trim the list by modifying
-  (or deleting) ``.travis.yml``, ``.appveyor.yml``, ``ci/travis.sh``.
+  (or deleting) ``.travis.yml``, ``azure-pipelines.yml``, ``ci.sh``.
 
 * Enable `Codecov <https://codecov.io>`__ for your repo.
+
+* If you want to use static typing (mypy) in your project:
+
+  * Update ``install_requires`` in ``setup.py`` to include ``"trio-typing"``
+    (assuming you use it).
+
+  * Uncomment the dependency on ``mypy`` in ``test-requirements.txt``.
+
+  * Uncomment the mypy invocation in ``check.sh``.
+
+  * Create an empty ``{{cookiecutter.package_name}/py.typed`` file,
+    and add ``"include {{cookiecutter.package_name}/py.typed"`` to
+    ``MANIFEST.in``.
 
 * File bugs or pull requests on `cookiecutter-trio
   <https://github.com/python-trio/cookiecutter-trio>`__ reporting any

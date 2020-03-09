@@ -14,6 +14,7 @@ setup(
     author_email="{{cookiecutter.email}}",
     license="{{cookiecutter._license_info[cookiecutter.license].license_field}}",
     packages=find_packages(),
+    include_package_data=True,
     install_requires=[
         "trio",
     ],
