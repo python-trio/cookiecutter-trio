@@ -47,8 +47,8 @@ might want to do to get started:
 
   * Uncomment the mypy invocation in ``check.sh``.
 
-  * Create an empty ``{{cookiecutter.package_name}/py.typed`` file,
-    and add ``"include {{cookiecutter.package_name}/py.typed"`` to
+  * Create an empty ``{{cookiecutter.package_name}}/py.typed`` file,
+    and add ``"include {{cookiecutter.package_name}}/py.typed"`` to
     ``MANIFEST.in``.
 
 * File bugs or pull requests on `cookiecutter-trio
