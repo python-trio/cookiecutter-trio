@@ -14,7 +14,7 @@ flake8 {{cookiecutter.package_name}}/ \
     || EXIT_STATUS=$?
 
 # Uncomment to run mypy (to check static typing)
-#mypy --strict --implicit-reexport -p {{cookiecutter.package_name}} || EXIT_STATUS=$?
+#mypy --strict -p {{cookiecutter.package_name}} || EXIT_STATUS=$?
 
 # Finally, leave a really clear warning of any issues and exit
 if [ $EXIT_STATUS -ne 0 ]; then
