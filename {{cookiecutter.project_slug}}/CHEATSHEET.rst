@@ -26,15 +26,15 @@ might want to do to get started:
   to get things working.)
 
 * Set up continuous integration: Currently, this project is set up to
-  test on Linux, MacOS, and Windows using Azure Pipelines, and to test
+  test on Linux, MacOS, and Windows using Github Actions, and to test
   some additional Python versions on Linux (PyPy and nightly) using
   Travis.
 
-  If that's what you want, then go to Travis and Azure Pipelines and enable
+  If that's what you want, then go to Travis and Github Actions and enable
   testing for your repo.
 
   If that's not what you want, then you can trim the list by modifying
-  (or deleting) ``.travis.yml``, ``azure-pipelines.yml``, ``ci.sh``.
+  (or deleting) ``.travis.yml``, ``.github/workflows/ci.yml``, ``ci.sh``.
 
 * Enable `Codecov <https://codecov.io>`__ for your repo.
 
