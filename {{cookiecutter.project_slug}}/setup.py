@@ -15,9 +15,7 @@ setup(
     license="{{cookiecutter._license_info[cookiecutter.license].license_field}}",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=[
-        "trio",
-    ],
+    install_requires=["trio"],
     keywords=[
         # COOKIECUTTER-TRIO-TODO: add some keywords
         # "async", "io", "networking", ...

@@ -6,12 +6,7 @@ set -ex -o pipefail
 env | sort
 
 if [ "$JOB_NAME" = "" ]; then
-    if [ "$SYSTEM_JOBIDENTIFIER" != "" ]; then
-        # azure pipelines
-        JOB_NAME="$SYSTEM_JOBDISPLAYNAME"
-    else
-        JOB_NAME="${TRAVIS_OS_NAME}-${TRAVIS_PYTHON_VERSION:-unknown}"
-    fi
+    JOB_NAME="${TRAVIS_OS_NAME}-${TRAVIS_PYTHON_VERSION:-unknown}"
 fi
 
 # Curl's built-in retry system is not very robust; it gives up on lots of
@@ -34,47 +29,12 @@ function curl-harder() {
 # Bootstrap python environment, if necessary
 ################################################################
 
-### Azure pipelines + Windows ###
+### Alpine ###
 
-# On azure pipeline's windows VMs, to get reasonable performance, we need to
-# jump through hoops to avoid touching the C:\ drive as much as possible.
-if [ "$AGENT_OS" = "Windows_NT" ]; then
-    # By default temp and cache directories are on C:\. Fix that.
-    export TEMP="${AGENT_TEMPDIRECTORY}"
-    export TMP="${AGENT_TEMPDIRECTORY}"
-    export TMPDIR="${AGENT_TEMPDIRECTORY}"
-    export PIP_CACHE_DIR="${AGENT_TEMPDIRECTORY}\\pip-cache"
-
-    # Download and install Python from scratch onto D:\, instead of using the
-    # pre-installed versions that azure pipelines provides on C:\.
-    # Also use -DirectDownload to stop nuget from caching things on C:\.
-    nuget install "${PYTHON_PKG}" -Version "${PYTHON_VERSION}" \
-          -OutputDirectory "$PWD/pyinstall" -ExcludeVersion \
-          -Source "https://api.nuget.org/v3/index.json" \
-          -Verbosity detailed -DirectDownload -NonInteractive
-
-    pydir="$PWD/pyinstall/${PYTHON_PKG}"
-    export PATH="${pydir}/tools:${pydir}/tools/scripts:$PATH"
-
-    # Fix an issue with the nuget python 3.5 packages
-    # https://github.com/python-trio/trio/pull/827#issuecomment-457433940
-    rm -f "${pydir}/tools/pyvenv.cfg" || true
-fi
-
-### Travis + macOS ###
-
-if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    JOB_NAME="osx_${MACPYTHON}"
-    curl-harder -o macpython.pkg https://www.python.org/ftp/python/${MACPYTHON}/python-${MACPYTHON}-macosx10.6.pkg
-    sudo installer -pkg macpython.pkg -target /
-    ls /Library/Frameworks/Python.framework/Versions/*/bin/
-    PYTHON_EXE=/Library/Frameworks/Python.framework/Versions/*/bin/python3
-    # The pip in older MacPython releases doesn't support a new enough TLS
-    curl-harder -o get-pip.py https://bootstrap.pypa.io/get-pip.py
-    sudo $PYTHON_EXE get-pip.py
-    sudo $PYTHON_EXE -m pip install virtualenv
-    $PYTHON_EXE -m virtualenv testenv
-    source testenv/bin/activate
+if [ -e /etc/alpine-release ]; then
+    apk add --no-cache gcc musl-dev libffi-dev openssl-dev python3-dev curl
+    python3 -m venv venv
+    source venv/bin/activate
 fi
 
 ### PyPy nightly (currently on Travis) ###
@@ -151,10 +111,12 @@ else
     elif [[ "$(python -V)" == *PyPy* ]]; then
         FLAG="pypy36release"
     fi
-    # It's more common to do
-    #   bash <(curl ...)
-    # but azure is broken:
-    #   https://developercommunity.visualstudio.com/content/problem/743824/bash-task-on-windows-suddenly-fails-with-bash-devf.html
+
+    # The codecov docs recommend something like 'bash <(curl ...)' to pipe the
+    # script directly into bash as its being downloaded. But, the codecov
+    # server is flaky, so we instead save to a temp file with retries, and
+    # wait until we've successfully fetched the whole script before trying to
+    # run it.
     curl-harder -o codecov.sh https://codecov.io/bash
     bash codecov.sh -n "${JOB_NAME}" -F "$FLAG"
 

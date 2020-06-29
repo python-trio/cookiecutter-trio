@@ -1,18 +1,15 @@
+os: linux
 language: python
-dist: bionic
+dist: focal
 
-matrix:
+jobs:
   include:
 {%- if cookiecutter.earliest_supported_python <= "3.6" %}
     # The pypy tests are slow, so we list them first
     - python: pypy3.6-7.2.0
+      dist: bionic
     - language: generic
       env: PYPY_NIGHTLY_BRANCH=py3.6
-{%- endif %}
-{%- if cookiecutter.earliest_supported_python <= "3.5" %}
-    - python: 3.5-dev
-{%- endif %}
-{%- if cookiecutter.earliest_supported_python <= "3.6" %}
     - python: 3.6-dev
 {%- endif %}
 {%- if cookiecutter.earliest_supported_python <= "3.7" %}
@@ -21,6 +18,7 @@ matrix:
 {%- if cookiecutter.earliest_supported_python <= "3.8" %}
     - python: 3.8-dev
 {%- endif %}
+    - python: 3.9-dev
     - python: nightly
 
 script:

@@ -4,16 +4,15 @@ on: [pull_request]
 
 jobs:
   Windows:
+{%- raw %}
     name: 'Windows (${{ matrix.python }}, ${{ matrix.arch }}${{ matrix.extra_name }})'
+{%- endraw %}
     timeout-minutes: 20
     runs-on: 'windows-latest'
     strategy:
       fail-fast: false
       matrix:
         python:
-{%- if cookiecutter.earliest_supported_python <= "3.5" %}
-          - '3.5'
-{%- endif %}
 {%- if cookiecutter.earliest_supported_python <= "3.6" %}
           - '3.6'
 {%- endif %}
@@ -24,6 +23,7 @@ jobs:
           - '3.8'
 {%- endif %}
         arch: ['x86', 'x64']
+{%- raw %}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -38,18 +38,18 @@ jobs:
         env:
           # Should match 'name:' up above
           JOB_NAME: 'Windows (${{ matrix.python }}, ${{ matrix.arch }})'
+{%- endraw %}
 
   Linux:
+{%- raw %}
     name: 'Linux (${{ matrix.python }}${{ matrix.extra_name }})'
+{%- endraw %}
     timeout-minutes: 10
     runs-on: 'ubuntu-latest'
     strategy:
       fail-fast: false
       matrix:
         python:
-{%- if cookiecutter.earliest_supported_python <= "3.5" %}
-          - '3.5'
-{%- endif %}
 {%- if cookiecutter.earliest_supported_python <= "3.6" %}
           - '3.6'
 {%- endif %}
@@ -69,6 +69,7 @@ jobs:
           - python: '3.8'
             check_lint: '1'
             extra_name: ', formatting and linting'
+{%- raw %}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -83,18 +84,18 @@ jobs:
           CHECK_LINT: '${{ matrix.check_lint }}'
           # Should match 'name:' up above
           JOB_NAME: 'Linux (${{ matrix.python }}${{ matrix.extra_name }})'
+{%- endraw %}
 
   macOS:
+{%- raw %}
     name: 'macOS (${{ matrix.python }})'
+{%- endraw %}
     timeout-minutes: 10
     runs-on: 'macos-latest'
     strategy:
       fail-fast: false
       matrix:
         python:
-{%- if cookiecutter.earliest_supported_python <= "3.5" %}
-          - '3.5'
-{%- endif %}
 {%- if cookiecutter.earliest_supported_python <= "3.6" %}
           - '3.6'
 {%- endif %}
@@ -104,6 +105,7 @@ jobs:
 {%- if cookiecutter.earliest_supported_python <= "3.8" %}
           - '3.8'
 {%- endif %}
+{%- raw %}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -116,3 +118,4 @@ jobs:
         env:
           # Should match 'name:' up above
           JOB_NAME: 'macOS (${{ matrix.python }})'
+{%- endraw %}
