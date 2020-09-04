@@ -93,7 +93,7 @@ To make a release
 
 * Double-check it all works, docs build, etc.
 
-* Build your sdist and wheel: ``python setup.py sdist bdist_wheel``
+* Build your sdist and wheel: ``python -m pep517.build --source --binary --out-dir dist/ .``
 
 * Upload to PyPI: ``twine upload dist/*``
 
